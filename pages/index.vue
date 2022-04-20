@@ -80,8 +80,7 @@
                       <a
                         href="#"
                         :title="course.title"
-                        class="course-title fsize18
-c-333"
+                        class="course-title fsize18 c-333"
                       >{{course.title}}</a>
                     </h3>
                     <section class="mt10 hLh20 of">

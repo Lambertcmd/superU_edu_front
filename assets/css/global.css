@@ -121,7 +121,7 @@ a.current-2 .lh-p-icon{background-position:0 -254px}
 .comm-title{overflow:hidden;clear:both;margin:40px 0 30px}
 .comm-title h2 span{font-size:26px;font-family:simhei}
 .comm-course-list ul{margin-left:-30px}
-.comm-course-list li{float:left;width:25%}
+.comm-course-list li{float:left;width:25%;height: 250px}
 .lt-ie9.lt-ie8 .comm-course-list li{width:24.98%}
 .lt-ie9 .u-course-list .comm-course-list li,.lt-ie9.lt-ie8 .u-course-list .comm-course-list li{width:33.33%}
 .comm-course-list li .cc-l-wrap{display:block;margin:0 0 50px 30px;overflow:hidden}
@@ -192,9 +192,9 @@ a.current-2 .lh-p-icon{background-position:0 -254px}
 .noter-dy:hover,.noter-zan:hover{color:#3FACEA;text-decoration:none}
 .noter-dy *,.noter-zan *{vertical-align:middle}
 .n-reply{display:none;margin-top:8px}
-.n-reply-wrap textarea{background:#fff;border:1px solid #ddd;width:98%;height:48px;padding:4px;font-size:14px;color:#666;overflow-x:hidden;overflow-y:auto}
+.n-reply-wrap textarea{background:#fff;border:1px solid #ddd;width:85%;height:48px;padding:4px;font-size:14px;color:#666;overflow-x:hidden;overflow-y:auto}
 .n-reply-wrap textarea:focus{border-color:#3FACEA}
-.lh-reply-btn{background:#6ACC7E;border:1px solid #55C76C;border-radius:3px;display:inline-block;height:18px;width:38px;text-align:center;font:12px/18px Arial;color:#fff}
+.lh-reply-btn{cursor:pointer;background:#6ACC7E;border:1px solid #55C76C;border-radius:3px;display:inline-block;height:58px;width:10%;text-align:center;font:12px/18px Arial;color:#fff}
 .lh-reply-btn:hover{background:#55C76C;color:#fff;text-decoration:none}
 .n-reply-list{padding-left:40px}
 .n-reply-list dd{border-bottom:1px solid #e9e9e9;padding:5px 0 8px 0;position:relative}
