@@ -42,8 +42,13 @@ service.interceptors.response.use(
             console.log("response.data.resultCode是28004")
             // 返回 错误代码-1 清除ticket信息并跳转到登录页面
             //debugger
-            window.location.href = "/login"
-            return
+            Message({
+                message: res.message,
+                type: 'error',
+                duration: 5 * 1000
+            })
+            // window.location.href = "/login"
+            return res
         } else if (res.code !== 20000) { // if the custom code is not 20000, it is judged as an error.
             //25000：订单支付中，不做任何提示
             if (res.code != 25000) {

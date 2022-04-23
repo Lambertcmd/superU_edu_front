@@ -68,14 +68,16 @@
               </span>
             </section>
             <section class="c-attr-mt">
-              <!-- <a
-                href="#"
+              <a
+                :href="chapterList.length > 0 ? '/player/'+chapterList[0].children[0].videoSourceId : '#'"
                 title="立即观看"
+                v-if="isBuy || Number(course.price) === 0"
                 class="comm-btn c-btn-3"
-              >立即观看</a> -->
+              >立即观看</a>
               <a
                 href="#"
                 title="立即购买"
+                v-else
                 @click="createOrder()"
                 class="comm-btn c-btn-3"
               >立即购买</a>
@@ -83,7 +85,7 @@
           </section>
         </aside>
         <aside class="thr-attr-box">
-          <ol class="thr-attr-ol clearfix">
+          <ol class="thr-attr-ol">
             <li>
               <p>&nbsp;</p>
               <aside>
@@ -214,6 +216,14 @@
                               height="50"
                               class="picImg"
                               :src="userInfo.avatar"
+                              v-if="userInfo.id"
+                            >
+                            <img
+                              width="50"
+                              height="50"
+                              class="picImg"
+                              v-else
+                              src="~/assets/img/avatar-boy.gif"
                             >
                           </aside>
                           <div class="of">
@@ -369,14 +379,7 @@ import commentApi from '@/api/comment';
 import orderApi from '@/api/order';
 export default {
   asyncData({ isDev, route, store, env, params, query, req, res, redirect, error }) {
-    return courseApi.getFrontCourseInfo(params.id)
-      .then((result) => {
-        return {
-          courseId: params.id,
-          course: result.data.courseInfoDTO,
-          chapterList: result.data.chapterVoList
-        }
-      })
+    return { courseId: params.id }
   },
   data() {
     return {
@@ -402,10 +405,12 @@ export default {
         courseCover: "",
         totalFee: "",
         teacherName: "",
-      }
+      },
+      isBuy: false//用户是否已购买课程
     }
   },
   created() {
+    this.initCourseInfo()
     this.pageCommentList()
     var user = cookie.get('guli_userInfo')
     if (user) {
@@ -413,8 +418,24 @@ export default {
     }
   },
   methods: {
+    initCourseInfo() {
+      courseApi.getFrontCourseInfo(this.courseId)
+        .then((result) => {
+          this.isBuy = result.data.isBuy
+          this.course = result.data.courseInfoDTO
+          this.chapterList = result.data.chapterVoList
+
+        })
+    },
     //创建订单
     createOrder() {
+      if (!this.userInfo.id) {
+        this.$message({
+          type: "error",
+          message: "请先登录",
+        });
+        return
+      }
       this.order.courseId = this.course.id
       this.order.courseTitle = this.course.title
       this.order.courseCover = this.course.cover
@@ -423,7 +444,8 @@ export default {
       console.log(this.order)
       orderApi.createOrder(this.order)
         .then((result) => {
-          console.log("orderNo:"+result.data.orderNo)
+          console.log("orderNo:" + result.data.orderNo)
+          this.$router.push({ path: '/order/' + result.data.orderNo })
         })
     },
     //分页查询课程评论
@@ -435,6 +457,13 @@ export default {
     },
     // 添加课程评论
     saveComment() {
+      if (!this.userInfo.id) {
+        this.$message({
+          type: "error",
+          message: "请先登录",
+        });
+        return
+      }
       this.comment.courseId = this.course.id
       this.comment.teacherId = this.course.teacherId
       commentApi.saveComment(this.comment)

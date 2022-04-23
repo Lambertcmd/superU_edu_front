@@ -159,7 +159,7 @@
                     <span class="fl jgAttr c-ccc f-fA">
                       <i class="c-999 f-fA">{{course.buyCount}}人学习</i>
                       |
-                      <i class="c-999 f-fA">9999评论</i>
+                      <i class="c-999 f-fA">{{course.viewCount}}人浏览</i>
                     </span>
                   </section>
                 </div>
