@@ -163,10 +163,18 @@
           <ul class="of flink-list">
             <li>
               <a
-                href="http://www.atguigu.com/"
-                title="尚硅谷"
+                href="https://github.com/Lambertcmd"
+                title="github"
                 target="_blank"
-              >尚硅谷
+              >个人github
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://gitee.com/lambertee"
+                title="gitee"
+                target="_blank"
+              >个人gitee
               </a>
             </li>
           </ul>
@@ -196,12 +204,12 @@
                   title="资源下载"
                   target="_blank"
                 >资源下载</a>|
-                <span>服务热线：010-56253825(北京) 0755-85293825(深圳)</span>
-                <span>Email：info@atguigu.com</span>
+                <span>服务热线：010-********(北京) 0755-********(深圳)</span>
+                <span>Email：lambertgit@Gmail.com</span>
               </section>
-              <section class="b-f-link mt10">
+              <!-- <section class="b-f-link mt10">
                 <span>©2018课程版权均归谷粒学院所有 京ICP备17055252号</span>
-              </section>
+              </section> -->
             </section>
           </section>
           <aside class="fl col-3 tac mt15">
